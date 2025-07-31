@@ -2,12 +2,13 @@ function esperar(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const cartas = document.querySelectorAll('.carta');
-  cartas.forEach(carta => {
-    carta.addEventListener('click', () => jugar(carta));
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const cartas = document.querySelectorAll('.carta');
+    cartas.forEach(carta => {
+      carta.addEventListener('click', () => jugar(carta));
+    });
   });
-});
 
 async function jugar(cartaElemento) {
   const resultado = document.getElementById('resultado');
@@ -16,6 +17,8 @@ async function jugar(cartaElemento) {
 
   const cartas = document.querySelectorAll('.carta');
   cartas.forEach(c => c.classList.add('deshabilitada'));
+
+  cartaElemento.classList.add('raise');
 
   await esperar(2000);
 
@@ -41,6 +44,7 @@ async function jugar(cartaElemento) {
   document.getElementById('reiniciar').style.display = 'inline-block';
 }
 
-function reiniciar() {
-  location.reload();
+  function reiniciar() {
+    location.reload();
+  }
 }

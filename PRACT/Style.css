@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+body {
+  font-family: 'Creepster', cursive;
+  color: #eee;
+  background-color: #111;
+  text-align: center;
+  margin-top: 50px;
+  transition: background-color 1s;
+}
+
+#cartas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.carta {
+  width: 100px;
+  height: 150px;
+  background-color: #222;
+  border: 2px solid #555;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: transform 0.3s;
+}
+
+.carta:hover {
+  transform: scale(1.05);
+}
+
+.carta.deshabilitada {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+body.suspenso {
+  background-color: #333;
+}
+
+body.muerte {
+  background-color: #8B0000;
+}
+
+body.salvado {
+  background-color: #006400;
+}
+
+#resultado {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 15px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}

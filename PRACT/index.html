@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Te Salvas o No?</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 100px; transition: background-color 1s; }
+    button { padding: 20px; font-size: 20px; cursor: pointer; }
+    #resultado { font-size: 30px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+
+  <h1>¿Te Salvas o No?</h1>
+  <button id="btn" onclick="jugar()">Levantar Carta</button>
+  <div id="resultado">...</div>
+
+  <script>
+    // Simular tiempo de suspenso con una Promesa
+    function esperar(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    // Lógica del juego como función async
+    async function jugar() {
+      const boton = document.getElementById('btn');
+      const resultado = document.getElementById('resultado');
+      
+      // Deshabilitar botón mientras se procesa
+      boton.disabled = true;
+      resultado.textContent = "Levantando carta...";
+      document.body.style.backgroundColor = "#333"; // suspenso
+
+      await esperar(2000); // esperar 2 segundos
+
+      const mazo = [
+        "✅ Te salvaste",
+        "✅ Te salvaste",
+        "✅ Te salvaste",
+        "✅ Te salvaste",
+        "✅ Te salvaste",
+        "💀 Te metiste un tiro"
+      ];
+
+      const carta = mazo[Math.floor(Math.random() * mazo.length)];
+      resultado.textContent = carta;
+
+      // Cambiar fondo según resultado
+      if (carta.includes("💀")) {
+        document.body.style.backgroundColor = "#8B0000"; // rojo oscuro
+      } else {
+        document.body.style.backgroundColor = "#006400"; // verde oscuro
+      }
+
+      boton.disabled = false;
+    }
+  </script>
+
+</body>
+</html>
